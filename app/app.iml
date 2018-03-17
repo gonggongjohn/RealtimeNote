@@ -121,5 +121,6 @@
     <orderEntry type="library" exported="" name="Gradle: support-vector-drawable-26.0.0-alpha1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="Gradle: javax.annotation-api-1.2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="Gradle: testing-support-lib-0.1" level="project" />
+    <orderEntry type="library" name="aip-java-sdk-4.1.1" level="project" />
   </component>
 </module>

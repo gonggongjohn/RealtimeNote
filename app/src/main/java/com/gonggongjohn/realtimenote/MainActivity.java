@@ -11,22 +11,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.gonggongjohn.realtimenote.ParseData.InnerUtil;
+import com.gonggongjohn.realtimenote.ParseData.OuterUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
+    TextView txtData;
     TextView txtRst;
     Button btnStart;
-    public static final String APP_ID = "10859775";
-    public static final String API_KEY = "5EVuI64lUAPEg7SobkYun3lz";
-    public static final String SECRET_KEY = "PnW1MEWmAXmeXrCKPxHMMZxEPPMLiAAr";
-    public static final String txt = "今天的作业是导学第95页到98页";
+    private static final String APP_ID = "10859775";
+    private static final String API_KEY = "5EVuI64lUAPEg7SobkYun3lz";
+    private static final String SECRET_KEY = "PnW1MEWmAXmeXrCKPxHMMZxEPPMLiAAr";
+    private static String OriginRstText = null;
+    private OuterUtil ou = new OuterUtil();
+    private List<InnerUtil> iu = new ArrayList<InnerUtil>();
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 		initPermission();
+		txtData = (TextView) findViewById(R.id.txtData);
 		txtRst = (TextView) findViewById(R.id.txtRst);
 		btnStart = (Button) findViewById(R.id.btnStart);
 		btnStart.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +59,14 @@ public class MainActivity extends AppCompatActivity{
         public void run() {
             Message msg = new Message();
             Bundle data = new Bundle();
-            data.putString("result", ILPHandler.SendLPData(APP_ID, API_KEY, SECRET_KEY, txt));
+            OriginRstText = ILPHandler.SendLPData(APP_ID, API_KEY, SECRET_KEY, txtData.getText().toString());
+            ou = IResultParser.parseObject(OriginRstText, OuterUtil.class);
+            iu = IResultParser.parseArray(ou.getItems(), InnerUtil.class);
+            StringBuffer TargetRstBuf = new StringBuffer();
+            for(int i=0; i< iu.size(); i++){
+                TargetRstBuf.append("第" + (i + 1) + "个成分:\n" + iu.get(i).toString() + "\n\n");
+            }
+            data.putString("result", TargetRstBuf.toString());
             msg.setData(data);
             handler.sendMessage(msg);
         }

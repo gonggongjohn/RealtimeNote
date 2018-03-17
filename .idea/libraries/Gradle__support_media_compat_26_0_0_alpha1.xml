@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: support-media-compat-26.0.0-alpha1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/552741ce47f93f18fd42452edecefbfea90714e9/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/552741ce47f93f18fd42452edecefbfea90714e9/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://D:/Android/android-sdk/extras/android/m2repository/com/android/support/support-media-compat/26.0.0-alpha1/support-media-compat-26.0.0-alpha1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

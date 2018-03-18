@@ -1,7 +1,7 @@
 package com.gonggongjohn.realtimenote.ParseData;
 
 public class OuterUtil {
-    private int log_id;
+    private long log_id;
     private String text;
     private String items;
 
@@ -10,11 +10,11 @@ public class OuterUtil {
         return "log_id=" + log_id + ", text=" + text + ", items" + items;
     }
 
-    public int getLog_id(){
+    public long getLog_id(){
         return log_id;
     }
 
-    public void setLog_id(int log_id){
+    public void setLog_id(long log_id){
         this.log_id = log_id;
     }
 

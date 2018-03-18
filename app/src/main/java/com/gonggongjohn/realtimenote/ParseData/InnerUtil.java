@@ -1,19 +1,21 @@
 package com.gonggongjohn.realtimenote.ParseData;
 
 public class InnerUtil {
-    private String id,word,postag,head,deprel;
+    private String word,postag,deprel,cpostag;
+    private int id,head;
 
     @Override
     public String toString(){
-        return "id=" + id + ", word=" + word +
-                ", postag" + postag + ", head" + head + ", deprel" + deprel;
+        cpostag = DPR.resolvePostag(postag);
+        return "标识符=" + id + ", 目标词汇=" + word +
+                ", 词性=" + cpostag + ", 继承源=" + head + ", 句子成分=" + deprel;
     }
 
-    public String getId(){
+    public int getId(){
         return id;
     }
 
-    public void setId(String id){
+    public void setId(int id){
         this.id = id;
     }
 
@@ -25,12 +27,20 @@ public class InnerUtil {
         this.word = word;
     }
 
-    public String getHead(){
+    public int getHead(){
         return head;
     }
 
-    public void setHead(String head){
+    public void setHead(int head){
         this.head = head;
+    }
+
+    public String getPostag(){
+        return postag;
+    }
+
+    public void setPostag(String postag){
+        this.postag = postag;
     }
 
     public String getDeprel(){
